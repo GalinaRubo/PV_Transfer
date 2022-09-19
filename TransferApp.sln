@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransferApp", "TransferApp\TransferApp.csproj", "{6E40C6A9-D9AE-4D51-A946-E9343E0A2876}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{FF449A4E-312B-4E8E-9080-E99B97B2D407}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6E40C6A9-D9AE-4D51-A946-E9343E0A2876}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E40C6A9-D9AE-4D51-A946-E9343E0A2876}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E40C6A9-D9AE-4D51-A946-E9343E0A2876}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E40C6A9-D9AE-4D51-A946-E9343E0A2876}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {346707D3-E812-480A-BB87-0D8611B72B25}
+	EndGlobalSection
+EndGlobal

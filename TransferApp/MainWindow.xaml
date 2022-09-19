@@ -1,0 +1,144 @@
+﻿<Window x:Class="TransferApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:TransferMVVM"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1250" Width="1350" Background="Green">
+    <Window.Resources>
+        <Style x:Key="labelTytleStyle">
+            <Setter Property="Control.FontFamily" Value="Britannic Bold"></Setter>
+            <Setter Property="Control.Foreground" Value="Yellow"></Setter>
+            <Setter Property="Control.FontWeight" Value="Bold"></Setter>
+            <Setter Property="Control.Margin" Value="25,10,0,0"></Setter>
+            <Setter Property="ItemsControl.FontSize" Value="30"></Setter>
+        </Style>
+
+        <Style x:Key="labelStyle" TargetType="Label">
+            <Setter Property="Control.FontFamily" Value="Courier"></Setter>
+            <Setter Property="Control.Foreground" Value="White"></Setter>
+            <Setter Property="Control.FontWeight" Value="Bold"></Setter>
+            <Setter Property="Control.Margin" Value="25,15,0,0"></Setter>
+            <Setter Property="ItemsControl.FontSize" Value="25"></Setter>
+        </Style>
+        <ControlTemplate TargetType="TextBox" x:Key="TbTemplate">
+            <Border BorderBrush="Gray" BorderThickness="2"  Height="50" Width="350" Background="LightYellow">
+            </Border>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="16*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Border BorderBrush="LimeGreen" BorderThickness="2" Width="400"
+                CornerRadius="10" Background="Yellow">
+                <TextBlock Text="&quot;PV Transfer&quot;" HorizontalAlignment="Center"
+                       FontSize="30" FontFamily="Vineta BT" FontWeight="Bold"/>
+            </Border>
+        </StackPanel>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Left">
+            <Label x:Name="Реквизиты" Content="Реквизиты" Style="{StaticResource labelTytleStyle}" />
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.5*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" HorizontalAlignment="Left">
+                    <Label x:Name="Номер_участника" Content=" 1. ID участника:" Style="{StaticResource labelStyle}" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Left">
+                    <Border BorderBrush="Gray" BorderThickness="2"  Height="50" Width="250">
+                        <TextBox x:Name="ID"  FontSize="25" FontWeight="Bold" />
+                    </Border>
+                </StackPanel>
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                    <Border BorderBrush="Gray" BorderThickness="2"  Height="50" Width="450">
+                        <TextBlock x:Name="Name"  FontSize="25" Background="White" FontWeight="Bold"  />
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Row="3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1.7*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="0.3*" />
+                    <ColumnDefinition Width="1.45*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" HorizontalAlignment="Left">
+                    <Label x:Name="Месяц" Content=" 2. Месяц:" Style="{StaticResource labelStyle}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Right">
+                    <Border BorderBrush="Gray" BorderThickness="2"  Height="50" Width="300">
+                        <ComboBox x:Name="Month"  FontSize="25"  ItemsSource="{Binding monthes}" SelectedIndex="0"  SelectionChanged="Month_SelectionChanged" FontWeight="Bold" HorizontalAlignment="Left" Width="296" />
+                    </Border>
+                </StackPanel>
+                <StackPanel Grid.Column="2" HorizontalAlignment="Right">
+                    <Label x:Name="Year" Content="20" FontSize="35" FontWeight="Bold" Foreground="Yellow"/>
+                </StackPanel>
+                <StackPanel Grid.Column="3" HorizontalAlignment="Left">
+                    <Border BorderBrush="Gray"  BorderThickness="2"  Height="50" Width="80" Margin="20,0">
+                        <TextBox x:Name="year"  FontSize="30" FontWeight="Bold" />
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Row="4">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="125*" />
+                    <ColumnDefinition Width="53*" />
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="39*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <Label x:Name="Регион" Content=" 3. Условное обозначение региона:" Style="{StaticResource labelStyle}"/>
+                    <Label x:Name="База_данных" Content=" 4. Последнее обновление БД:" Style="{StaticResource labelStyle}"/>
+                    <Label x:Name="Контакт" Content=" 5. Контактный телефон:" Style="{StaticResource labelStyle}"/>
+                    <Label x:Name="Происхождение_баллов" Content="Происхождение баллов" Style="{StaticResource labelTytleStyle}"/>
+                    <Label x:Name="Перенос_с_прошлого_месяца" Content=" 6. Перенос с прошлого месяца:" Style="{StaticResource labelStyle}"/>
+                    <Label x:Name="Проблемные_баллы" Content=" 7. Проблемные баллы прошлого месяца:" Style="{StaticResource labelStyle}"/>
+                    <Label x:Name="Список_заказов_на_центральных_складах" Content=" 8. Список заказов на складах центральных офисов:" Style="{StaticResource labelStyle}"/>
+                    <Label x:Name="Список_возвратов_на_центральные_склады" Content=" 9. Список возвратов на склады центральных офисов:" Style="{StaticResource labelStyle}"/>
+                    <Label x:Name="Получено_баллов_из_других_отчетов" Content="10. Получено баллов из других отчетов:" Style="{StaticResource labelStyle}"/>
+                    <Label x:Name="Передано_баллов_в_другие_отчеты" Content="11. Передано баллов в другие отчеты:" Style="{StaticResource labelStyle}"/>
+                    <Label x:Name="Итого_очков" Content="12. Итого очков:" Style="{StaticResource labelStyle}"/>
+                    <Label x:Name="Роспись_баллов" Content="Роспись баллов" Style="{StaticResource labelTytleStyle}" />
+                    <Label x:Name="Расписано_баллов" Content="13. Расписано баллов:" Style="{StaticResource labelStyle}"/>
+                    <Label x:Name="Ручная_роспись_баллов" Content="14. Ручная роспись баллов:" Style="{StaticResource labelStyle}"/>
+                    <Label x:Name="Итого_расписано_баллов" Content="15. Итого расписано баллов:" Style="{StaticResource labelStyle}"/>
+                    <Label x:Name="Перенос_баллов_на_следующий_месяц" Content="16. Перенос баллов на следующий месяц:" Style="{StaticResource labelStyle}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Left" Grid.ColumnSpan="3">
+                    <Border BorderBrush="Gray" BorderThickness="2"  Height="50" Width="350">
+                        <ComboBox x:Name="Region"  FontSize="25" ItemsSource="{Binding regions}" SelectedIndex="0"  SelectionChanged="Region_SelectionChanged" FontWeight="Bold"/>
+                    </Border>
+
+                    <TextBox x:Name="UbdateBD"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,5" />
+                    <TextBox x:Name="Contact"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,5"/>
+                    <TextBox x:Name="Remainder"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="42"/>
+                    <TextBox x:Name="Problem"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,-30,0,0"/>
+                    <TextBox x:Name="ListZakaz"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,10,0,0"/>
+                    <TextBox x:Name="ListBack"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,10,0,0"/>
+                    <TextBox x:Name="GetBall"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,10,0,0"/>
+                    <TextBox x:Name="SetBall"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,10,0,0"/>
+                    <TextBox x:Name="FullBall"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,10,0,0"/>
+                    <TextBox x:Name="ListDistributed"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,35,0,0"/>
+                    <TextBox x:Name="HandDistributed"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,10,0,0"/>
+                    <TextBox x:Name="FullDistributed"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,10,0,0"/>
+                    <TextBox x:Name="RemainderNext"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,10,0,0"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
