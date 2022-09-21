@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using TransferMVVM;
 using System.Windows.Controls;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +16,6 @@ namespace TransferApp
 			InitializeComponent();
  //           bd = new AppContext();
  //           List<Distributor> distr = bd.Distributors.ToList();
-			DataContext = new ApplicationViewModelTransfer();
 		}
 
 		private void Month_SelectionChanged(object sender, SelectionChangedEventArgs e)

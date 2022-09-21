@@ -3,9 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewModels="clr-namespace:TransferMVVM"
+        xmlns:vm="clr-namespace:TransferApp.ViewModels"
+        xmlns:viewModels="clr-namespace:TransferApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1250" Width="1350" Background="Green">
+        Title="MainWindow" Height="1250" Width="1350"  Background="Green">
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
     <Window.Resources>
         <Style x:Key="labelTytleStyle">
             <Setter Property="Control.FontFamily" Value="Britannic Bold"></Setter>
@@ -62,7 +66,7 @@
                 </StackPanel>
                 <StackPanel Grid.Column="2" HorizontalAlignment="Center">
                     <Border BorderBrush="Gray" BorderThickness="2"  Height="50" Width="450">
-                        <TextBlock x:Name="Name"  FontSize="25" Background="White" FontWeight="Bold"  />
+                        <TextBlock x:Name="FIO"  FontSize="25" Background="White" FontWeight="Bold"  />
                     </Border>
                 </StackPanel>
             </Grid>

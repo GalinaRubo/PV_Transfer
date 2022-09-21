@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TransferApp
+namespace TransferApp.SQLite
 {
     internal class Distributor
     {
@@ -28,9 +28,9 @@ namespace TransferApp
         public Distributor() { }
         public Distributor(string name, string id, string phone)
         {
-        Name = name;
-        ID = id;
-        Phone = phone;        
+            Name = name;
+            ID = id;
+            Phone = phone;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TransferMVVM
+namespace TransferApp.ViewModels
 {
 	internal class ItemsTransfer
 	{
