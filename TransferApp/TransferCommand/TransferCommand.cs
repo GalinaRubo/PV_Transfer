@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace TransferApp
+namespace TransferApp.TransferCommand
 {
     public class TransferCommand : ICommand
     {

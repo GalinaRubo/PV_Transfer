@@ -1,5 +1,7 @@
 ﻿using TransferApp.ViewModels.Base;
 using System.Collections.ObjectModel;
+using TransferApp.SQLite;
+using TransferApp.TransferCommand;
 
 namespace TransferApp.ViewModels
 {
@@ -8,6 +10,7 @@ namespace TransferApp.ViewModels
 
         public ObservableCollection<string> monthes { get; set; }
         public ObservableCollection<string> regions { get; set; }
+
 
 
         public MainWindowViewModel()
@@ -26,3 +29,6 @@ namespace TransferApp.ViewModels
         }
     }
 }
+
+
+
