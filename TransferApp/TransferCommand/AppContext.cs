@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+using TransferApp.ViewModels.Base;
 
 namespace TransferApp.TransferCommand
 {

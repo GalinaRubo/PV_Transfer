@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using TransferApp.TransferCommand;
+using TransferApp.ViewModels.Base;
 
 namespace TransferApp.SQLite
 {

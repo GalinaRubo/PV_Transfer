@@ -2,7 +2,7 @@
 
 namespace TransferApp.ViewModels
 {
-	internal class ItemsTransfer
+	internal class DataTransfer
 	{
 		public static List<string> ExportMonthes()
 		{

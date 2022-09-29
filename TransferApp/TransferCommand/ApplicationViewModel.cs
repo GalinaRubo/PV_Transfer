@@ -5,6 +5,7 @@ using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using TransferApp.SQLite;
 using Microsoft.VisualBasic;
+using TransferApp.ViewModels.Base;
 
 namespace TransferApp.TransferCommand
 {
@@ -14,6 +15,7 @@ namespace TransferApp.TransferCommand
         TransferCommand? addCommand;
         TransferCommand? editCommand; 
         TransferCommand? deleteCommand;
+
         public ObservableCollection<Distributor> Distributors { get; set; }
        
         public ApplicationViewModel()
@@ -50,7 +52,7 @@ namespace TransferApp.TransferCommand
                 return editCommand ??
                   (editCommand = new TransferCommand((o) =>
                   {
-                      GetDistributor _distributor = new GetDistributor();
+                      GetDistributor _distributor = new GetDistributor(0);
                       Distributor distributorObn = _distributor.distributor;
                       if (distributorObn != null)
                       {
@@ -91,7 +93,7 @@ namespace TransferApp.TransferCommand
                   (deleteCommand = new TransferCommand((o) =>
                   {
                       // получаем выделенный объект
-                      GetDistributor _distributor = new GetDistributor();
+                      GetDistributor _distributor = new GetDistributor(0);
                       Distributor distributorDel = _distributor.distributor;
                       if (distributorDel != null)
                       {

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using TransferApp.SQLite;
+using TransferApp.ViewModels.Base;
 
 namespace TransferApp.TransferCommand
 {
@@ -8,26 +9,31 @@ namespace TransferApp.TransferCommand
 
         public Distributor distributor { get; set; }
 
-        public GetDistributor()
+        public GetDistributor(int number)
         {
-            distributor = new Distributor() {};
+            distributor = new Distributor() { };
             distributor = null;
-
-            IdWindow idWindow = new IdWindow();
-            if (idWindow.ShowDialog() == true)
+            if (number > 0) distributor = NewDistributer(number);
+            else
             {
+                IdWindow idWindow = new IdWindow();
+                if (idWindow.ShowDialog() == true)
+                distributor = NewDistributer(idWindow.DistributorNumber);
+                if (distributor == null)
+                MessageBox.Show("ID нет в БД");
+            }   
+        }
+        public Distributor NewDistributer(int _number)
+        {
                 ApplicationViewModel ob = new ApplicationViewModel();
                 foreach (var ds in ob.Distributors)
                 {
-                    if (ds.Number == idWindow.DistributorNumber)
+                    if (ds.Number == _number)
                     {
-                        distributor = ds;
-                        break;
+                        return ds;
                     }                      
                 }
-                if (distributor == null)
-                MessageBox.Show("ID нет в БД");              
-            }
+            return null;
         }
     }
  
