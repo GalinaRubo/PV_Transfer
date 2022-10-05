@@ -1,0 +1,68 @@
+﻿<Window x:Class="TransferApp.WindowsTransfer.TablDistBall"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+        mc:Ignorable="d"
+        Title="TablDistBall" Height="180" Width="800" Background="LawnGreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                    <Label x:Name="ФИО_участника" Content="Имя участника" FontWeight="Bold" FontSize="16" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                    <Label x:Name="ИД_участника" Content="ID участника" FontWeight="Bold" FontSize="16" />
+                </StackPanel>
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                    <Label x:Name="Сумма_баллов_участника" Content="Итого" FontWeight="Bold" FontSize="16" />
+                </StackPanel>
+                <StackPanel Grid.Column="3" HorizontalAlignment="Center">
+                    <Label x:Name="Баллы_участника" Content="Баллы" FontWeight="Bold" FontSize="16" />
+                </StackPanel>
+            </Grid>
+            </StackPanel>
+        <StackPanel Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                    <TextBlock x:Name="_ФИО_участника" TextAlignment="Center" Width="300" Height="30" Margin="0,10" Background="White" FontWeight="Bold" FontSize="16" />
+                </StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center">
+                    <TextBox x:Name="_ИД_участника" TextAlignment="Center" Width="100" Height="30" Margin="0,10" Background="White"  FontWeight="Bold" FontSize="16"  KeyDown =" _ID_OnKeyDownHandler "  TextChanged="_ID_TextChanged" />
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center">
+                    <TextBlock x:Name="_Итого" Width="100" Height="30" Margin="0,10" Background="White" TextAlignment="Center" FontWeight="Bold" FontSize="16"></TextBlock>
+                </StackPanel>
+                <StackPanel Grid.Column="3" HorizontalAlignment="Center">
+                    <TextBox x:Name="_Баллы_участника"   Width="100" Height="30" Margin="0,10" Background="White" TextAlignment="Center" FontWeight="Bold" FontSize="16" KeyDown =" _Ball_OnKeyDownHandler "  TextChanged="_Ball_TextChanged"></TextBox>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <StackPanel Grid.Row="2">
+            <Grid>
+                <StackPanel Grid.Column="0" HorizontalAlignment="Center">
+                    <Button x:Name="Роспись" Content="Посмотреть роспись баллов"  Width="250" Height="30" Margin="0,10"  FontWeight="Bold" FontSize="16" Click="Роспись_Click" />
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
