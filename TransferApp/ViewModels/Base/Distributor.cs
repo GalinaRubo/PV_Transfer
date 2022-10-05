@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Xml.Linq;
 
-namespace TransferApp.TransferCommand
+namespace TransferApp.ViewModels.Base
 {
     public class Distributor : INotifyPropertyChanged
     {

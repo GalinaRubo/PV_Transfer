@@ -26,10 +26,6 @@
             <Setter Property="Control.Margin" Value="25,5,0,0"></Setter>
             <Setter Property="ItemsControl.FontSize" Value="25"></Setter>
         </Style>
-        <ControlTemplate TargetType="TextBox" x:Key="TbTemplate">
-            <Border BorderBrush="Gray" BorderThickness="2"  Height="37" Width="350" Background="LightYellow" HorizontalAlignment="left">
-            </Border>
-        </ControlTemplate>
     </Window.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid>
@@ -63,12 +59,12 @@
                     </StackPanel>
                     <StackPanel Grid.Column="1" HorizontalAlignment="Left">
                         <Border BorderBrush="Gray" BorderThickness="2"  Height="40" Width="250">
-                            <Button x:Name="ID"  FontSize="25" Background="White" FontWeight="Bold" Click="Button_Click"/>
+                            <TextBox x:Name="ID"  FontSize="25" TextAlignment="Center" Background="White" FontWeight="Bold" KeyDown ="ID_OnKeyDownHandler" TextChanged="ID_TextChanged" Height="36" VerticalAlignment="Top"/>
                         </Border>
                     </StackPanel>
                     <StackPanel Grid.Column="2" HorizontalAlignment="Left">
                         <Border BorderBrush="Gray" BorderThickness="2"  Height="40" Width="510" Margin="0,0">
-                            <TextBlock x:Name="FIO"  FontSize="25" Background="White" FontWeight="Bold"  />
+                            <TextBlock x:Name="FIO" TextAlignment="Center" FontSize="25" Background="White" FontWeight="Bold"  />
                         </Border>
                     </StackPanel>
                 </Grid>
@@ -87,7 +83,7 @@
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Left" Grid.ColumnSpan="3" Margin="238,0,0,0">
                         <Border BorderBrush="Gray" BorderThickness="2"  Height="40" Width="300">
-                            <ComboBox x:Name="Month"  FontSize="25"  ItemsSource="{Binding monthes}" SelectedIndex="0"  SelectionChanged="Month_SelectionChanged" FontWeight="Bold" HorizontalAlignment="Left" Width="296" />
+                            <ComboBox x:Name="Month"   FontSize="25"  SelectedIndex="0"  SelectionChanged="Month_SelectionChanged" FontWeight="Bold" HorizontalAlignment="Left" Width="296" />
                         </Border>
                     </StackPanel>
                     <StackPanel Grid.Column="3" HorizontalAlignment="Left" Margin="16,0,0,0">
@@ -95,7 +91,7 @@
                     </StackPanel>
                     <StackPanel Grid.Column="4" HorizontalAlignment="Left">
                         <Border BorderBrush="Gray"  BorderThickness="2"  Height="40" Width="80">
-                            <TextBox x:Name="year"  FontSize="30" FontWeight="Bold" />
+                            <TextBox x:Name="year" TextAlignment="Center"  FontSize="30" FontWeight="Bold"  Height="36" KeyDown =" year_OnKeyDownHandler " VerticalAlignment="Top" />
                         </Border>
                     </StackPanel>
                 </Grid>
@@ -114,38 +110,40 @@
                         <Label x:Name="Происхождение_баллов" Content="Происхождение баллов" Style="{StaticResource labelTytleStyle}"/>
                         <Label x:Name="Перенос_с_прошлого_месяца" Content=" 6. Перенос с прошлого месяца:" Style="{StaticResource labelStyle}"/>
                         <Label x:Name="Проблемные_баллы" Content=" 7. Проблемные баллы прошлого месяца:" Style="{StaticResource labelStyle}"/>
-                        <Label x:Name="Список_заказов_на_центральных_складах" Content=" 8. Список заказов на складах центральных офисов:" Style="{StaticResource labelStyle}"/>
-                        <Label x:Name="Список_возвратов_на_центральные_склады" Content=" 9. Список возвратов на склады центральных офисов:" Style="{StaticResource labelStyle}"/>
+                        <Label x:Name="Список_заказов_на_центральных_складах" Content=" 8. Баллы заказов на складах центральных офисов:" Style="{StaticResource labelStyle}"/>
+                        <Label x:Name="Список_возвратов_на_центральные_склады" Content=" 9. Баллы возвратов на склады центральных офисов:" Style="{StaticResource labelStyle}"/>
                         <Label x:Name="Получено_баллов_из_других_отчетов" Content="10. Получено баллов из других отчетов:" Style="{StaticResource labelStyle}"/>
                         <Label x:Name="Передано_баллов_в_другие_отчеты" Content="11. Передано баллов в другие отчеты:" Style="{StaticResource labelStyle}"/>
                         <Label x:Name="Итого_очков" Content="12. Итого очков:" Style="{StaticResource labelStyle}"/>
                         <Label x:Name="Роспись_баллов" Content="Роспись баллов" Style="{StaticResource labelTytleStyle}" />
                         <Label x:Name="Расписано_баллов" Content="13. Расписано баллов:" Style="{StaticResource labelStyle}"/>
-                        <Label x:Name="Ручная_роспись_баллов" Content="14. Ручная роспись баллов:" Style="{StaticResource labelStyle}"/>
-                        <Label x:Name="Итого_расписано_баллов" Content="15. Итого расписано баллов:" Style="{StaticResource labelStyle}"/>
                         <Label x:Name="Перенос_баллов_на_следующий_месяц" Content="16. Перенос баллов на следующий месяц:" Style="{StaticResource labelStyle}"/>
                     </StackPanel>
                     <StackPanel Grid.Column="2" HorizontalAlignment="Center" Grid.ColumnSpan="3">
                         <Border BorderBrush="Gray" BorderThickness="2"  Height="40" Width="350">
-                            <ComboBox x:Name="Region"  FontSize="25" ItemsSource="{Binding regions}" SelectedIndex="0"  SelectionChanged="Region_SelectionChanged" FontWeight="Bold" Height="36" VerticalAlignment="Top"/>
+                            <ComboBox x:Name="Region"  FontSize="25"  SelectedIndex="0"  SelectionChanged="Region_SelectionChanged" FontWeight="Bold" Height="36" VerticalAlignment="Top"/>
                         </Border>
                         <Border BorderBrush="Gray" BorderThickness="2"  Height="40" Width="350" Margin="0,10">
-                            <TextBlock x:Name="UpdateBD"  FontSize="25" Background="LightYellow" FontWeight="Bold"  />
+                            <TextBlock x:Name="UpdateBD" TextAlignment="Center" FontSize="25" Background="LightYellow" FontWeight="Bold"  />
                         </Border>
                         <Border BorderBrush="Gray" BorderThickness="2"  Height="37" Width="350" Background="LightYellow" HorizontalAlignment="Center">
-                            <TextBlock x:Name="Contact"  FontSize="25"  FontWeight="Bold"/>
+                            <TextBlock x:Name="Contact" TextAlignment="Center"  FontSize="25"  FontWeight="Bold"/>
                         </Border>
-                        <TextBox x:Name="Remainder"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,48" TextChanged="Remainder_TextChanged"/>
-                        <TextBox x:Name="Problem"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,-30,0,0"/>
-                        <TextBox x:Name="ListZakaz"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,10,0,0"/>
-                        <TextBox x:Name="ListBack"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,10,0,0"/>
-                        <TextBox x:Name="GetBall"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,10,0,0"/>
-                        <TextBox x:Name="SetBall"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,10,0,0"/>
-                        <TextBox x:Name="FullBall"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,10,0,0"/>
-                        <TextBox x:Name="ListDistributed"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,45,0,0"/>
-                        <TextBox x:Name="HandDistributed"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,10,0,0"/>
-                        <TextBox x:Name="FullDistributed"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,10,0,0"/>
-                        <TextBox x:Name="RemainderNext"  FontSize="25" Template="{StaticResource TbTemplate}" Margin="0,10,0,0"/>
+                    <StackPanel >
+                            <TextBox x:Name="Remainder" TextAlignment="Center" FontSize="25"  Margin="0,48" KeyDown =" Remainder_OnKeyDownHandler "  TextChanged="Remainder_TextChanged" FontWeight="Bold"></TextBox>
+                            <TextBox x:Name="Problem"  TextAlignment="Center" FontSize="25"  Margin="0,-30,0,0" KeyDown =" Problem_OnKeyDownHandler " TextChanged="Problem_TextChanged" FontWeight="Bold"></TextBox>
+                            <TextBox x:Name="ListZakaz" TextAlignment="Center" FontSize="25" Margin="0,10,0,0" KeyDown =" ListZakaz_OnKeyDownHandler " TextChanged="ListZakaz_TextChanged" FontWeight="Bold"></TextBox>
+                            <TextBox x:Name="ListBack" TextAlignment="Center" FontSize="25"  Margin="0,10,0,0" KeyDown =" ListBack_OnKeyDownHandler " TextChanged="ListBack_TextChanged" FontWeight="Bold"></TextBox>
+                            <TextBox x:Name="GetBall" TextAlignment="Center" FontSize="25"  Margin="0,10,0,0" KeyDown =" GetBall_OnKeyDownHandler " TextChanged="GetBall_TextChanged" FontWeight="Bold"></TextBox>
+                            <TextBox x:Name="SetBall" TextAlignment="Center" FontSize="25" Margin="0,10,0,0"  KeyDown =" SetBall_OnKeyDownHandler " TextChanged="SetBall_TextChanged" FontWeight="Bold"></TextBox>
+                            <Border BorderBrush="Gray" BorderThickness="2"  Height="37" Width="350"  Margin="0,10,0,0" Background="LightYellow" HorizontalAlignment="Center">
+                                <TextBlock x:Name="FullBall" TextAlignment="Center" FontSize="25"   FontWeight="Bold"></TextBlock>
+                                </Border>
+                            <TextBlock x:Name="ListDistributed" TextAlignment="Center" FontSize="25"  Margin="0,55,0,0" Background="White"  FontWeight="Bold" MouseDown="ListDistributed_MouseDown"/>
+                            <Border BorderBrush="Gray" BorderThickness="2"  Height="37" Width="350"  Margin="0,10,0,0" Background="LightYellow" HorizontalAlignment="Center">
+                                <TextBlock x:Name="RemainderNext" TextAlignment="Center"  FontSize="25" FontWeight="Bold"></TextBlock>
+                                </Border>
+                    </StackPanel>
                     </StackPanel>
                 </Grid>
             </StackPanel>
@@ -157,24 +155,24 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" HorizontalAlignment="Center" Margin="0,5">
+                    <StackPanel Grid.Column="0" HorizontalAlignment="Center" Margin="0,45">
                         <Border BorderBrush="Yellow" BorderThickness="2" CornerRadius="10"  Height="40" Width="200">
                             <Button Content="Добавить н/у" FontSize="20" FontWeight="Bold" Command="{Binding AddCommand}"  Click="ButtonAdd_Click" Height="36" VerticalAlignment="Bottom" />
                         </Border>
                     </StackPanel>
-                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" Margin="0,5">
+                    <StackPanel Grid.Column="1" HorizontalAlignment="Center" Margin="0,45">
                         <Border BorderBrush="Yellow" BorderThickness="2" CornerRadius="10"  Height="40" Width="200">
                             <Button Content="Удалить н/у" FontSize="20" FontWeight="Bold" Command="{Binding DeleteCommand}" Click="ButtonDel_Click" />
                         </Border>
                     </StackPanel>
-                    <StackPanel Grid.Column="2" HorizontalAlignment="Center" Margin="0,5">
+                    <StackPanel Grid.Column="2" HorizontalAlignment="Center" Margin="0,45">
                         <Border BorderBrush="Yellow" BorderThickness="2" CornerRadius="10"  Height="40" Width="200" >
                             <Button Content="Редактировать н/у" FontSize="20" FontWeight="Bold" Command="{Binding EditCommand}" Click="ButtonRed_Click" Height="36" VerticalAlignment="Top" />
                         </Border>
                     </StackPanel>
-                    <StackPanel Grid.Column="3" HorizontalAlignment="Center" Margin="0,5">
+                    <StackPanel Grid.Column="3" HorizontalAlignment="Center" Margin="0,45">
                         <Border BorderBrush="Yellow" BorderThickness="2" CornerRadius="10"  Height="40" Width="200">
-                            <Button Content="Создать отчет" FontSize="20" FontWeight="Bold"/>
+                            <Button  Content="Создать отчет" FontSize="20" FontWeight="Bold" Command="{Binding CreateCommand}" Click="ButtonCreate_Click"/>
                         </Border>
                     </StackPanel>
                 </Grid>

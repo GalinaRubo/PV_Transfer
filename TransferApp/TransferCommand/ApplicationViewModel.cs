@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using TransferApp.ViewModels;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using TransferApp.SQLite;
-using Microsoft.VisualBasic;
+using TransferApp.ViewModels.Base;
 
 namespace TransferApp.TransferCommand
 {
@@ -14,6 +13,8 @@ namespace TransferApp.TransferCommand
         TransferCommand? addCommand;
         TransferCommand? editCommand; 
         TransferCommand? deleteCommand;
+        TransferCommand? createCommand;
+
         public ObservableCollection<Distributor> Distributors { get; set; }
        
         public ApplicationViewModel()
@@ -50,7 +51,7 @@ namespace TransferApp.TransferCommand
                 return editCommand ??
                   (editCommand = new TransferCommand((o) =>
                   {
-                      GetDistributor _distributor = new GetDistributor();
+                      GetDistributor _distributor = new GetDistributor(0);
                       Distributor distributorObn = _distributor.distributor;
                       if (distributorObn != null)
                       {
@@ -91,7 +92,7 @@ namespace TransferApp.TransferCommand
                   (deleteCommand = new TransferCommand((o) =>
                   {
                       // получаем выделенный объект
-                      GetDistributor _distributor = new GetDistributor();
+                      GetDistributor _distributor = new GetDistributor(0);
                       Distributor distributorDel = _distributor.distributor;
                       if (distributorDel != null)
                       {
@@ -114,6 +115,24 @@ namespace TransferApp.TransferCommand
                               db.SaveChanges();
                           }
                       }
+                  }));
+            }
+        }
+        //команда создания отчета
+        public TransferCommand CreateCommand
+        {
+            get
+            {
+                return createCommand ??
+                  (createCommand = new TransferCommand((o) =>
+                  {
+                  string exportStr = "";
+
+                      foreach (var item in MainWindowViewModel.MVIS)
+                      {
+                     exportStr = exportStr + item.ToString() + "\n";
+                      }
+                  MessageBox.Show(exportStr);
                   }));
             }
         }
