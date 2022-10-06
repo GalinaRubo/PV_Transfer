@@ -19,53 +19,65 @@ namespace TransferApp.WindowsTransfer
        
         public void GetFIO(string id)
         {
-            _id = id;
-            GetDistributor Distributor = new GetDistributor(Convert.ToInt32(id));
-            if (Distributor.distributor != null)
+            int number;
+            bool success = int.TryParse(id, out number);
+            if (success)
             {
-                string value;
-                fio = Distributor.distributor.Name;
-                if (id_ball.TryGetValue(id, out value))
+                _id = id;
+                GetDistributor Distributor = new GetDistributor(Convert.ToInt32(id));
+                if (Distributor.distributor != null)
                 {
-                    itogo_dir = value;
+                    string value;
+                    fio = Distributor.distributor.Name;
+                    if (id_ball.TryGetValue(id, out value))
+                    {
+                        itogo_dir = value;
+                    }
+                    else itogo_dir = "";
                 }
-                else itogo_dir = "";
+                else
+                {
+                    fio = "";
+                    MessageBox.Show("ID нет в БД");
+                }
             }
-            else
-            {
-                fio = "";
-                MessageBox.Show("ID нет в БД");
-            }            
+            else MessageBox.Show("Ошибка ввода");
         }
         public void GetItogo(string _ball, string _itogo, bool _key)
         {
-            itogo_dir = _itogo;
-            if (itogo_dir == "") itogo_dir = "0";
+            int number;
+            bool success = int.TryParse(_ball, out number);
+            if (success)
+            {
+                itogo_dir = _itogo;
+                if (itogo_dir == "") itogo_dir = "0";
 
-            if (_key)
-            {
-                itogo_dir = ((Convert.ToInt32(itogo_dir) + Convert.ToInt32(_ball)).ToString());
-            }
-            else
-            {
-                itogo_dir = _ball;
-            }
-            if (id_ball.ContainsKey(_id))
-            {
-                id_ball.Remove(_id);
-                id_fio.Remove(_id);
-            };
-            id_ball.Add(_id, itogo_dir);
-            id_fio.Add(_id, fio);
+                if (_key)
+                {
+                    itogo_dir = ((Convert.ToInt32(itogo_dir) + Convert.ToInt32(_ball)).ToString());
+                }
+                else
+                {
+                    itogo_dir = _ball;
+                }
+                if (id_ball.ContainsKey(_id))
+                {
+                    id_ball.Remove(_id);
+                    id_fio.Remove(_id);
+                };
+                id_ball.Add(_id, itogo_dir);
+                id_fio.Add(_id, fio);
 
 
-            int it = 0;
-            foreach (var ds in id_ball)
-            {
-                it += Convert.ToInt32(ds.Value);
+                int it = 0;
+                foreach (var ds in id_ball)
+                {
+                    it += Convert.ToInt32(ds.Value);
+                }
+                itogo = it.ToString();
+                Report();
             }
-            itogo = it.ToString();
-            Report();
+            else MessageBox.Show("Ошибка ввода");
         }
         public void Report()
         {
