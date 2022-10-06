@@ -1,5 +1,8 @@
 ﻿using TransferApp.ViewModels.Base;
 using System.Collections.ObjectModel;
+using TransferApp.SQLite;
+using TransferApp.TransferCommand;
+using System;
 using System;
 using System.Collections.Generic;
 using System.Windows;
@@ -26,7 +29,6 @@ namespace TransferApp.ViewModels
         public string remainderNext { get; set; }
 
 
-
         public MainWindowViewModel()
         {
             monthes = new ObservableCollection<string>();
@@ -39,6 +41,14 @@ namespace TransferApp.ViewModels
             {
                 regions.Add(rg);
             }
+
+            remainder = problem = fullball = "";
+        }
+        public void GetWindowsData(string rem, string pro)
+        {
+            remainder = rem;
+            problem = pro;
+            fullball = (Convert.ToInt32(rem) + Convert.ToInt32(pro)).ToString();
 
             MVII = new List<int>(7) {0,0,0,0,0,0,0};
             

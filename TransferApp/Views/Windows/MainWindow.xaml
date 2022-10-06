@@ -60,6 +60,7 @@
                     <StackPanel Grid.Column="1" HorizontalAlignment="Left">
                         <Border BorderBrush="Gray" BorderThickness="2"  Height="40" Width="250">
                             <TextBox x:Name="ID"  FontSize="25" TextAlignment="Center" Background="White" FontWeight="Bold" KeyDown ="ID_OnKeyDownHandler" TextChanged="ID_TextChanged" Height="36" VerticalAlignment="Top"/>
+                            <TextBox x:Name="ID"  FontSize="25" Background="White" FontWeight="Bold" KeyDown =" ID_OnKeyDownHandler " Height="36" VerticalAlignment="Top" TextChanged="ID_TextChanged_1"/>
                         </Border>
                     </StackPanel>
                     <StackPanel Grid.Column="2" HorizontalAlignment="Left">
@@ -83,7 +84,7 @@
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Left" Grid.ColumnSpan="3" Margin="238,0,0,0">
                         <Border BorderBrush="Gray" BorderThickness="2"  Height="40" Width="300">
-                            <ComboBox x:Name="Month"   FontSize="25"  SelectedIndex="0"  SelectionChanged="Month_SelectionChanged" FontWeight="Bold" HorizontalAlignment="Left" Width="296" />
+                            <ComboBox x:Name="Month"   FontSize="25"  ItemsSource="{Binding monthes}" SelectedIndex="0"  SelectionChanged="Month_SelectionChanged" FontWeight="Bold" HorizontalAlignment="Left" Width="296" />
                         </Border>
                     </StackPanel>
                     <StackPanel Grid.Column="3" HorizontalAlignment="Left" Margin="16,0,0,0">
@@ -91,7 +92,7 @@
                     </StackPanel>
                     <StackPanel Grid.Column="4" HorizontalAlignment="Left">
                         <Border BorderBrush="Gray"  BorderThickness="2"  Height="40" Width="80">
-                            <TextBox x:Name="year" TextAlignment="Center"  FontSize="30" FontWeight="Bold"  Height="36" KeyDown =" year_OnKeyDownHandler " VerticalAlignment="Top" />
+                            <TextBox x:Name="year" TextAlignment="Center"  FontSize="30" FontWeight="Bold" />
                         </Border>
                     </StackPanel>
                 </Grid>
@@ -130,16 +131,20 @@
                             <TextBlock x:Name="Contact" TextAlignment="Center"  FontSize="25"  FontWeight="Bold"/>
                         </Border>
                     <StackPanel >
-                            <TextBox x:Name="Remainder" TextAlignment="Center" FontSize="25"  Margin="0,48" KeyDown =" Remainder_OnKeyDownHandler "  TextChanged="Remainder_TextChanged" FontWeight="Bold"></TextBox>
-                            <TextBox x:Name="Problem"  TextAlignment="Center" FontSize="25"  Margin="0,-30,0,0" KeyDown =" Problem_OnKeyDownHandler " TextChanged="Problem_TextChanged" FontWeight="Bold"></TextBox>
+                            <TextBox x:Name="Remainder" Text ="{Binding remainder}" TextAlignment="Center" FontSize="25"  Margin="0,48" KeyDown =" Remainder_OnKeyDownHandler "  TextChanged="Remainder_TextChanged" FontWeight="Bold"></TextBox>
+                            <TextBox x:Name="Problem" Text ="{Binding problem}" TextAlignment="Center" FontSize="25"  Margin="0,-30,0,0" KeyDown =" Problem_OnKeyDownHandler " TextChanged="Problem_TextChanged" FontWeight="Bold"></TextBox>
                             <TextBox x:Name="ListZakaz" TextAlignment="Center" FontSize="25" Margin="0,10,0,0" KeyDown =" ListZakaz_OnKeyDownHandler " TextChanged="ListZakaz_TextChanged" FontWeight="Bold"></TextBox>
                             <TextBox x:Name="ListBack" TextAlignment="Center" FontSize="25"  Margin="0,10,0,0" KeyDown =" ListBack_OnKeyDownHandler " TextChanged="ListBack_TextChanged" FontWeight="Bold"></TextBox>
                             <TextBox x:Name="GetBall" TextAlignment="Center" FontSize="25"  Margin="0,10,0,0" KeyDown =" GetBall_OnKeyDownHandler " TextChanged="GetBall_TextChanged" FontWeight="Bold"></TextBox>
                             <TextBox x:Name="SetBall" TextAlignment="Center" FontSize="25" Margin="0,10,0,0"  KeyDown =" SetBall_OnKeyDownHandler " TextChanged="SetBall_TextChanged" FontWeight="Bold"></TextBox>
                             <Border BorderBrush="Gray" BorderThickness="2"  Height="37" Width="350"  Margin="0,10,0,0" Background="LightYellow" HorizontalAlignment="Center">
-                                <TextBlock x:Name="FullBall" TextAlignment="Center" FontSize="25"   FontWeight="Bold"></TextBlock>
+                                <TextBlock x:Name="FullBall" Text ="{Binding fullball}" TextAlignment="Center" FontSize="25"   FontWeight="Bold"></TextBlock>
                                 </Border>
-                            <TextBlock x:Name="ListDistributed" TextAlignment="Center" FontSize="25"  Margin="0,55,0,0" Background="White"  FontWeight="Bold" MouseDown="ListDistributed_MouseDown"/>
+                            <TextBox x:Name="ListDistributed" TextAlignment="Center" FontSize="25"  Margin="0,45,0,0" KeyDown =" ListDistributed_OnKeyDownHandler " TextChanged="ListDistributed_TextChanged" FontWeight="Bold"></TextBox>
+                            <TextBox x:Name="HandDistributed" TextAlignment="Center" FontSize="25"  Margin="0,10,0,0" KeyDown =" HandDistributed_OnKeyDownHandler " TextChanged="HandDistributed_TextChanged" FontWeight="Bold"></TextBox>
+                            <Border BorderBrush="Gray" BorderThickness="2"  Height="37" Width="350"  Margin="0,10,0,0" Background="LightYellow" HorizontalAlignment="Center">
+                                <TextBlock x:Name="FullDistributed" TextAlignment="Center" FontSize="25"    FontWeight="Bold"></TextBlock>
+                                </Border>
                             <Border BorderBrush="Gray" BorderThickness="2"  Height="37" Width="350"  Margin="0,10,0,0" Background="LightYellow" HorizontalAlignment="Center">
                                 <TextBlock x:Name="RemainderNext" TextAlignment="Center"  FontSize="25" FontWeight="Bold"></TextBlock>
                                 </Border>

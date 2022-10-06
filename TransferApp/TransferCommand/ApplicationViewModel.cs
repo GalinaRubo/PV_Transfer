@@ -3,6 +3,7 @@ using TransferApp.ViewModels;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using TransferApp.SQLite;
+using Microsoft.VisualBasic;
 using TransferApp.ViewModels.Base;
 
 namespace TransferApp.TransferCommand
@@ -13,7 +14,6 @@ namespace TransferApp.TransferCommand
         TransferCommand? addCommand;
         TransferCommand? editCommand; 
         TransferCommand? deleteCommand;
-        TransferCommand? createCommand;
 
         public ObservableCollection<Distributor> Distributors { get; set; }
        

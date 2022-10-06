@@ -7,6 +7,9 @@ using System.IO;
 using System.Windows.Input;
 using System;
 using AppContext = TransferApp.TransferCommand.AppContext;
+using System.Windows.Input;
+using System;
+using AppContext = TransferApp.TransferCommand.AppContext;
 using TransferApp.WindowsTransfer;
 
 namespace TransferApp
@@ -15,6 +18,13 @@ namespace TransferApp
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
+	{
+       AppContext db = new AppContext();
+       GetMainWindowItem getMainWindowItem = new GetMainWindowItem();
+
+        public MainWindow()
+		{
+			InitializeComponent();
     {
         AppContext db = new AppContext();
         MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
@@ -22,6 +32,7 @@ namespace TransferApp
         {
             InitializeComponent();
             DataContext = new ApplicationViewModel();
+            GetMainWindowItem getMainWindowItem = new GetMainWindowItem();
             Month.ItemsSource = mainWindowViewModel.monthes;
             Region.ItemsSource = mainWindowViewModel.regions;
         }
@@ -78,6 +89,20 @@ namespace TransferApp
                 GetDistributor Distributor = new GetDistributor(Convert.ToInt32(ID.Text));
                 if (Distributor.distributor != null)
                 {
+                    var dateTime = File.GetCreationTime("distributors.db");
+                    UpdateBD.Text = dateTime.ToString();
+                    FIO.Text = Distributor.distributor.Name;
+                    Contact.Text = Distributor.distributor.Email;
+                }
+                else
+                {
+                    FIO.Text = "";
+                    Contact.Text = "";
+                    MessageBox.Show("ID нет в БД");
+                }
+            }
+        }
+                {
                     mainWindowViewModel._id = ID.Text;
                     var dateTime = File.GetCreationTime("distributors.db");
                     UpdateBD.Text = mainWindowViewModel._obn = dateTime.ToString();
@@ -95,6 +120,130 @@ namespace TransferApp
         }
 
         private void Contact_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Problem_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+        private void Problem_OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+
+                getMainWindowItem.WindowTextChange(2, Problem.Text);
+                FullBall.Text = getMainWindowItem.fullball;
+                RemainderNext.Text = getMainWindowItem.remainderNext;
+            }
+        }
+
+        private void ListZakaz_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+        private void ListZakaz_OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                getMainWindowItem.WindowTextChange(3, ListZakaz.Text);
+                FullBall.Text = getMainWindowItem.fullball;
+                RemainderNext.Text = getMainWindowItem.remainderNext;
+            }
+        }
+        private void ListBack_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void ListBack_OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                getMainWindowItem.WindowTextChange(4, ListBack.Text);
+                FullBall.Text = getMainWindowItem.fullball;
+                RemainderNext.Text = getMainWindowItem.remainderNext;
+            }
+
+        }
+
+        private void GetBall_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+        private void GetBall_OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                getMainWindowItem.WindowTextChange(5, GetBall.Text);
+                FullBall.Text = getMainWindowItem.fullball;
+                RemainderNext.Text = getMainWindowItem.remainderNext;
+            }
+
+        }
+
+        private void SetBall_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+        private void SetBall_OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                getMainWindowItem.WindowTextChange(6, SetBall.Text);
+                FullBall.Text = getMainWindowItem.fullball;
+                RemainderNext.Text = getMainWindowItem.remainderNext;
+            }
+
+        }
+
+        private void FullBall_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void ListDistributed_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+        private void ListDistributed_OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                getMainWindowItem.WindowTextChange(7, ListDistributed.Text);
+                FullDistributed.Text = getMainWindowItem.fullDistributed;
+                RemainderNext.Text = getMainWindowItem.remainderNext;
+            }
+
+        }
+
+        private void HandDistributed_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+        private void HandDistributed_OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                getMainWindowItem.WindowTextChange(8, HandDistributed.Text);
+                FullDistributed.Text = getMainWindowItem.fullDistributed;
+                RemainderNext.Text = getMainWindowItem.remainderNext;
+            }
+
+        }
+
+        private void FullDistributed_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void RemainderNext_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Remainder_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
