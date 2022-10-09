@@ -4,15 +4,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using TransferApp.TransferCommand;
-using TransferApp.SQLite;
-using System.IO;
-using System.Windows.Input;
-using System;
-using AppContext = TransferApp.TransferCommand.AppContext;
-using System.Windows.Input;
-using System;
-using AppContext = TransferApp.TransferCommand.AppContext;
+using TransferApp.ViewModels;
 using TransferApp.WindowsTransfer;
+using AppContext = TransferApp.TransferCommand.AppContext;
 
 namespace TransferApp
 {
@@ -102,16 +96,6 @@ namespace TransferApp
                     }
                 }
                 else MessageBox.Show("Ошибка ввода");
-            }
-        }
-
-                }
-                else
-                {
-                    FIO.Text = "";
-                    Contact.Text = "";
-                    MessageBox.Show("ID нет в БД");
-                }
             }
         }
 
@@ -241,7 +225,7 @@ namespace TransferApp
 
         private void ButtonCreate_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void ListDistributed_MouseDown(object sender, MouseButtonEventArgs e)
@@ -254,6 +238,6 @@ namespace TransferApp
             RemainderNext.Text = mainWindowViewModel.remainderNext;
         }
 
- 
+
     }
 }

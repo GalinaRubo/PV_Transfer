@@ -3,7 +3,6 @@ using TransferApp.ViewModels;
 using System.Windows;
 using Microsoft.EntityFrameworkCore;
 using TransferApp.SQLite;
-using Microsoft.VisualBasic;
 using TransferApp.ViewModels.Base;
 
 namespace TransferApp.TransferCommand
@@ -12,13 +11,12 @@ namespace TransferApp.TransferCommand
     {
         AppContext db = new AppContext();
         TransferCommand? addCommand;
-        TransferCommand? editCommand; 
+        TransferCommand? editCommand;
         TransferCommand? deleteCommand;
         TransferCommand? createCommand;
 
-
         public ObservableCollection<Distributor> Distributors { get; set; }
-       
+
         public ApplicationViewModel()
         {
             db.Database.EnsureCreated();
@@ -128,30 +126,12 @@ namespace TransferApp.TransferCommand
                 return createCommand ??
                   (createCommand = new TransferCommand((o) =>
                   {
-                  string exportStr = "";
+                      string exportStr = "";
 
                       foreach (var item in MainWindowViewModel.MVIS)
                       {
-                     exportStr = exportStr + item.ToString() + "\n";
+                          exportStr = exportStr + item.ToString() + "\n";
                       }
-                  }));
-            }
-        }
-        //команда создания отчета
-        public TransferCommand CreateCommand
-        {
-            get
-            {
-                return createCommand ??
-                  (createCommand = new TransferCommand((o) =>
-                  {
-                  string exportStr = "";
-
-                      foreach (var item in MainWindowViewModel.MVIS)
-                      {
-                     exportStr = exportStr + item.ToString() + "\n";
-                      }
-                  MessageBox.Show(exportStr);
                       //                  MessageBox.Show(exportStr);
                       TransferFile.TransferToFile(exportStr);
                   }));
