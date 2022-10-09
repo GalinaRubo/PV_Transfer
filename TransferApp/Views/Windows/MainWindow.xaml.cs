@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,13 +18,16 @@ namespace TransferApp
     {
         AppContext db = new AppContext();
         MainWindowViewModel mainWindowViewModel = new MainWindowViewModel();
+        Dictionary<string, string> id_ball = new Dictionary<string, string>();
+        Dictionary<string, string> id_fio = new Dictionary<string, string>();
         public MainWindow()
         {
             InitializeComponent();
             DataContext = new ApplicationViewModel();
             Month.ItemsSource = mainWindowViewModel.monthes;
             Region.ItemsSource = mainWindowViewModel.regions;
-        }
+            
+    }
 
         private void Month_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

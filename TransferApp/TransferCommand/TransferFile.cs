@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace TransferApp.TransferCommand
 {
@@ -48,7 +42,7 @@ namespace TransferApp.TransferCommand
                 i++;
             }
             i = 0;
-            str_sample = Insert_str(str_sample, str_ends[0], dt.ToString("dd-MM-yyyy"));
+            str_sample = Insert_str(str_sample, str_ends[0], dt.ToString("dd-MM-yyyy") + ins_space(20,String.Empty));
             for (int j = 1; j < 19; j++)
             {
                     if (sample[j].IndexOf("*") != -1) str_sample = Insert_str(str_sample, str_ends[j], "*");
@@ -56,7 +50,7 @@ namespace TransferApp.TransferCommand
                     {
                         if (j == 3 || j == 4)
                         {
-                            str_sample = Insert_str(str_sample, str_ends[j], data[i] + "     " + data[i + 1]);
+                            str_sample = Insert_str(str_sample, str_ends[j], data[i] + "  " + data[i + 1] + ins_space(20, String.Empty));
                             i++;
                         }
                         else str_sample = Insert_str(str_sample, str_ends[j], data[i]);
@@ -81,6 +75,18 @@ namespace TransferApp.TransferCommand
             if (sub_str == "*") sub_str = " ";
             _str = _str.Insert(index - sub_str.Length, sub_str);
             return _str;
+        }
+        public static string ins_space(int count, string str)
+        {
+            count = count - str.Length;
+            int i = 0;
+            str = String.Empty;
+            while (i < count)
+            {
+                str = str + " ";
+                i++;
+            }
+            return str;
         }
     }
 }

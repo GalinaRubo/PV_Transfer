@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
-using System.Xml.Linq;
 using TransferApp.TransferCommand;
 
 namespace TransferApp.WindowsTransfer
 {
     public class TableWindowViewModel
     {
-
         public Dictionary<string, string> id_ball = new Dictionary<string, string>();
         public Dictionary<string, string> id_fio = new Dictionary<string, string>();
         public string strRep { get; set; }
@@ -17,7 +14,9 @@ namespace TransferApp.WindowsTransfer
         public string itogo_dir { get; set; }
         public string itogo { get; set; }
         static string _id;
-        public TableWindowViewModel() { }
+
+        public TableWindowViewModel()
+        { }
        
         public void GetFIO(string id)
         {
