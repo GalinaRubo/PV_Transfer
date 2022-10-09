@@ -4,9 +4,15 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using TransferApp.TransferCommand;
-using TransferApp.ViewModels;
-using TransferApp.WindowsTransfer;
+using TransferApp.SQLite;
+using System.IO;
+using System.Windows.Input;
+using System;
 using AppContext = TransferApp.TransferCommand.AppContext;
+using System.Windows.Input;
+using System;
+using AppContext = TransferApp.TransferCommand.AppContext;
+using TransferApp.WindowsTransfer;
 
 namespace TransferApp
 {
@@ -96,6 +102,16 @@ namespace TransferApp
                     }
                 }
                 else MessageBox.Show("Ошибка ввода");
+            }
+        }
+
+                }
+                else
+                {
+                    FIO.Text = "";
+                    Contact.Text = "";
+                    MessageBox.Show("ID нет в БД");
+                }
             }
         }
 
