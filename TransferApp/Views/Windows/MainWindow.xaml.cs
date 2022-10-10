@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using TransferApp.TransferCommand;
 using TransferApp.ViewModels;
+using TransferApp.ViewModels.Base;
 using TransferApp.WindowsTransfer;
 using AppContext = TransferApp.TransferCommand.AppContext;
 

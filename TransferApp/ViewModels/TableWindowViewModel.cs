@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows;
-using TransferApp.TransferCommand;
+using TransferApp.ViewModels.Base;
 
-namespace TransferApp.WindowsTransfer
+namespace TransferApp.ViewModels
 {
     public class TableWindowViewModel
     {
@@ -17,7 +17,7 @@ namespace TransferApp.WindowsTransfer
 
         public TableWindowViewModel()
         { }
-       
+
         public void GetFIO(string id)
         {
             int number;
@@ -55,7 +55,7 @@ namespace TransferApp.WindowsTransfer
 
                 if (_key)
                 {
-                    itogo_dir = ((Convert.ToInt32(itogo_dir) + Convert.ToInt32(_ball)).ToString());
+                    itogo_dir = (Convert.ToInt32(itogo_dir) + Convert.ToInt32(_ball)).ToString();
                 }
                 else
                 {
@@ -82,22 +82,22 @@ namespace TransferApp.WindowsTransfer
         }
         public void Report()
         {
-            strRep = String.Empty;
+            strRep = string.Empty;
             foreach (var b in id_ball)
             {
                 foreach (var f in id_fio)
                 {
                     if (b.Key == f.Key)
 
-                        strRep = strRep + "\n" + "  ID:" + ins_space(8,f.Key) + f.Key + "  Имя: " + f.Value + ins_space(23,f.Value) + "  Баллы:" + ins_space(8,b.Value) + b.Value;                   
-                    }
+                        strRep = strRep + "\n" + "  ID:" + ins_space(8, f.Key) + f.Key + "  Имя: " + f.Value + ins_space(23, f.Value) + "  Баллы:" + ins_space(8, b.Value) + b.Value;
                 }
-            }          
+            }
+        }
         public string ins_space(int count, string str)
         {
-            count = count-str.Length;
+            count = count - str.Length;
             int i = 0;
-            str = String.Empty;
+            str = string.Empty;
             while (i < count)
             {
                 str = str + " ";

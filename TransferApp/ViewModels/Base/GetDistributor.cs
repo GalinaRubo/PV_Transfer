@@ -1,8 +1,8 @@
 ﻿using System.Windows;
 using TransferApp.SQLite;
-using TransferApp.ViewModels.Base;
+using TransferApp.TransferCommand;
 
-namespace TransferApp.TransferCommand
+namespace TransferApp.ViewModels.Base
 {
     internal class GetDistributor
     {
@@ -18,23 +18,23 @@ namespace TransferApp.TransferCommand
             {
                 IdWindow idWindow = new IdWindow();
                 if (idWindow.ShowDialog() == true)
-                distributor = NewDistributer(idWindow.DistributorNumber);
+                    distributor = NewDistributer(idWindow.DistributorNumber);
                 if (distributor == null)
-                MessageBox.Show("ID нет в БД");
-            }   
+                    MessageBox.Show("ID нет в БД");
+            }
         }
         public Distributor NewDistributer(int _number)
         {
-                ApplicationViewModel ob = new ApplicationViewModel();
-                foreach (var ds in ob.Distributors)
+            ApplicationViewModel ob = new ApplicationViewModel();
+            foreach (var ds in ob.Distributors)
+            {
+                if (ds.Number == _number)
                 {
-                    if (ds.Number == _number)
-                    {
-                        return ds;
-                    }                      
+                    return ds;
                 }
+            }
             return null;
         }
     }
- 
+
 }

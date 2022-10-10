@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using TransferApp.ViewModels;
 using Key = System.Windows.Input.Key;
 
 namespace TransferApp.WindowsTransfer
